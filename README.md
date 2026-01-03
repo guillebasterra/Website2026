@@ -12,77 +12,6 @@ A minimalist personal portfolio website built with Next.js, featuring projects, 
 - **SEO Optimized**: Full meta tags, OpenGraph, sitemap, and robots.txt
 - **Fast Performance**: Optimized images, code splitting, and static generation
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- YouTube Data API v3 key (optional, fallback data provided)
-
-### Installation
-
-1. Clone the repository or navigate to this directory
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables:
-
-The `.env.local` file is already configured with YouTube API credentials. If you need to update them:
-
-```bash
-YOUTUBE_API_KEY=your_youtube_api_key
-YOUTUBE_CHANNEL_ID=willybasterra
-```
-
-To get a YouTube API key:
-- Go to [Google Cloud Console](https://console.cloud.google.com/)
-- Create a new project or select an existing one
-- Enable the YouTube Data API v3
-- Create credentials (API key)
-- Copy the key to `.env.local`
-
-4. Run the development server:
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Project Structure
-
-```
-├── app/                      # Next.js app directory
-│   ├── layout.tsx           # Root layout with navigation
-│   ├── page.tsx             # About page (homepage)
-│   ├── projects/            # Projects page
-│   ├── essays/              # Essays list and [slug] pages
-│   ├── youtube/             # YouTube videos grid
-│   ├── contact/             # Contact page
-│   ├── api/                 # API routes for essays
-│   ├── sitemap.ts           # Sitemap generation
-│   └── robots.ts            # Robots.txt
-├── components/              # React components
-│   ├── Navigation.tsx       # Vertical sidebar + mobile menu
-│   ├── PageTransition.tsx   # Blur transition wrapper
-│   └── ContactOverlay.tsx   # Contact modal (if needed)
-├── content/
-│   ├── essays/              # MDX essay files
-│   │   └── [slug]/
-│   │       └── index.mdx
-│   └── projects/            # Project data
-│       └── projects.json
-├── lib/                     # Utility functions
-│   ├── mdx.ts              # MDX processing
-│   └── youtube.ts          # YouTube API integration
-├── public/
-│   ├── essays/             # Essay images
-│   └── projects/           # Project thumbnails
-└── .env.local              # Environment variables
-```
-
 ## Content Management
 
 ### Adding Essays
@@ -143,12 +72,6 @@ Add thumbnails to `/public/projects/project-name/`
 
 Edit `app/page.tsx` to customize your bio.
 
-### YouTube Videos
-
-Videos are automatically fetched from the YouTube channel. The page revalidates every hour to show new videos.
-
-If the API fails, it falls back to cached videos defined in `lib/youtube.ts`.
-
 ## Customization
 
 ### Colors
@@ -166,19 +89,7 @@ To change fonts, update the imports in `app/layout.tsx`.
 ### Navigation Links
 
 Edit `components/Navigation.tsx` to modify menu items, social links, or external links.
-
-### Dithered Overlay
-
-When you have the dithered art file:
-
-1. Add the image to `/public/dithered-overlay.png`
-2. Uncomment the overlay section in `app/layout.tsx`:
-
-```tsx
-<div className="fixed bottom-0 left-0 right-0 pointer-events-none z-10">
-  <img src="/dithered-overlay.png" alt="" className="w-full" />
-</div>
-```
+``
 
 ## Building for Production
 
