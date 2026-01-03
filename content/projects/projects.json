@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "example-project-1",
+    "title": "Example Project 1",
+    "description": "This is a placeholder project. Replace this with your actual project details including a brief description of what you built and why.",
+    "thumbnail": "/projects/example-1/thumbnail.jpg",
+    "date": "2024-12",
+    "links": {
+      "live": "https://example.com",
+      "github": "https://github.com/username/project"
+    }
+  },
+  {
+    "slug": "example-project-2",
+    "title": "Example Project 2",
+    "description": "Another placeholder project. Add more projects to this JSON file as you complete them.",
+    "thumbnail": "/projects/example-2/thumbnail.jpg",
+    "date": "2024-11",
+    "links": {
+      "github": "https://github.com/username/project2"
+    }
+  }
+]

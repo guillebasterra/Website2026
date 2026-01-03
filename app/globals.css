@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-black;
+  }
+
+  body {
+    @apply bg-white text-black font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+
+  /* View Transitions Blur Effect - Only for main content */
+  ::view-transition-old(main-content),
+  ::view-transition-new(main-content) {
+    animation-duration: 850ms;
+    animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  ::view-transition-old(main-content) {
+    animation-name: fade-out-blur;
+  }
+
+  ::view-transition-new(main-content) {
+    animation-name: fade-in-blur;
+  }
+
+  @keyframes fade-out-blur {
+    from {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    to {
+      opacity: 0;
+      filter: blur(5px);
+    }
+  }
+
+  @keyframes fade-in-blur {
+    from {
+      opacity: 0;
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+}
+
+@layer utilities {
+  /* Prism theme for code blocks - GitHub Light (monochrome) */
+  pre[class*="language-"] {
+    @apply bg-gray-50 border border-gray-200 rounded-md p-4 overflow-x-auto;
+  }
+
+  code[class*="language-"] {
+    @apply text-sm font-mono;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    @apply text-gray-500;
+  }
+
+  .token.punctuation {
+    @apply text-gray-700;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    @apply text-black;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    @apply text-gray-800;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    @apply text-gray-600;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    @apply text-black font-semibold;
+  }
+
+  .token.function,
+  .token.class-name {
+    @apply text-gray-900;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    @apply text-gray-700;
+  }
+}
