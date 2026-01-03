@@ -61,7 +61,7 @@ export default function Navigation() {
         <Link
           href="/"
           onClick={() => setIsMobileMenuOpen(false)}
-          className="mb-12 text-xl font-semibold leading-tight hover:opacity-60 transition-opacity"
+          className="mb-6 text-xl font-semibold leading-tight hover:opacity-60 transition-opacity"
         >
           GUILLERMO<br />BASTERRA
         </Link>

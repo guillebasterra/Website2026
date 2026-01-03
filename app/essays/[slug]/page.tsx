@@ -61,7 +61,7 @@ export default function EssayPage() {
   }
 
   return (
-    <div className="min-h-screen p-16 pt-24">
+    <div className="min-h-screen p-16 pt-16">
       <article className="max-w-3xl">
         {/* Back Link */}
         <Link
