@@ -10,8 +10,8 @@ export default async function Essays() {
   const essays = await getAllEssays();
 
   return (
-    <div className="min-h-screen p-16 pt-16">
-      <div className="max-w-4xl">
+    <div className="p-16 pt-16">
+      <div className="max-w-2xl">
         {essays.length > 0 ? (
           <div className="space-y-4">
             {essays.map((essay) => (

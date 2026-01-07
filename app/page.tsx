@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="min-h-screen p-16 pt-16">
+    <div className="p-16 pt-16">
       <div className="max-w-2xl space-y-6">
         <p className="text-lg leading-relaxed text-black">
           This is a placeholder for your bio. Write a few paragraphs about yourself, your background, interests, and what you do.

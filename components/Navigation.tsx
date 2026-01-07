@@ -8,6 +8,7 @@ const menuItems = [
   { label: 'About', href: '/' },
   { label: 'Projects', href: '/projects' },
   { label: 'Essays', href: '/essays' },
+  { label: 'Quotes', href: '/quotes' },
   { label: 'Contact', href: '/contact' },
 ];
 

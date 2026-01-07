@@ -19,41 +19,9 @@
     @apply font-sans;
   }
 
-  /* View Transitions Blur Effect - Only for main content */
-  ::view-transition-old(main-content),
-  ::view-transition-new(main-content) {
-    animation-duration: 850ms;
-    animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
-  }
-
-  ::view-transition-old(main-content) {
-    animation-name: fade-out-blur;
-  }
-
-  ::view-transition-new(main-content) {
-    animation-name: fade-in-blur;
-  }
-
-  @keyframes fade-out-blur {
-    from {
-      opacity: 1;
-      filter: blur(0px);
-    }
-    to {
-      opacity: 0;
-      filter: blur(5px);
-    }
-  }
-
-  @keyframes fade-in-blur {
-    from {
-      opacity: 0;
-      filter: blur(5px);
-    }
-    to {
-      opacity: 1;
-      filter: blur(0px);
-    }
+  /* View Transitions - Ensure they stay below the overlay */
+  ::view-transition {
+    z-index: 1;
   }
 }
 

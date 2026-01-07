@@ -41,7 +41,7 @@ export default function EssayPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen p-6 md:p-12 flex items-center justify-center">
+      <div className="p-6 md:p-12 flex items-center justify-center">
         <p className="text-gray-600">Loading...</p>
       </div>
     );
@@ -49,7 +49,7 @@ export default function EssayPage() {
 
   if (!essay) {
     return (
-      <div className="min-h-screen p-6 md:p-12 flex items-center justify-center">
+      <div className="p-6 md:p-12 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600 mb-4">Essay not found</p>
           <Link href="/essays" className="underline hover:text-gray-600">
@@ -61,19 +61,25 @@ export default function EssayPage() {
   }
 
   return (
-    <div className="min-h-screen p-16 pt-16">
-      <article className="max-w-3xl">
+    <div className="p-16 pt-16">
+      <article className="max-w-2xl">
         {/* Back Link */}
         <Link
           href="/essays"
-          className="inline-block text-sm text-gray-500 mb-8 hover:text-black transition-colors"
+          className="inline-block text-sm text-gray-500 mb-12 hover:text-black transition-colors"
         >
           ← Back to Essays
         </Link>
 
-        {/* Essay Header */}
-        <header className="mb-12">
-          <div className="flex gap-4 text-sm text-gray-500 mb-8">
+        {/* Substack-style Header */}
+        <header className="mb-12 pb-8 border-b border-gray-200">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
+            {essay.title}
+          </h1>
+          <p className="text-lg text-gray-600 mb-6 font-normal">
+            {essay.description}
+          </p>
+          <div className="flex items-center gap-3 text-sm text-gray-500">
             <time>
               {new Date(essay.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -81,6 +87,8 @@ export default function EssayPage() {
                 day: 'numeric',
               })}
             </time>
+            <span>•</span>
+            <span>{essay.readingTime}</span>
             {essay.updated && (
               <>
                 <span>•</span>
@@ -93,13 +101,11 @@ export default function EssayPage() {
                 </span>
               </>
             )}
-            <span>•</span>
-            <span>{essay.readingTime}</span>
           </div>
         </header>
 
-        {/* Essay Content */}
-        <div className="prose prose-lg max-w-none prose-headings:text-black prose-p:text-gray-700">
+        {/* Essay Content with Substack-style Typography */}
+        <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-black prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-black prose-a:underline hover:prose-a:text-gray-600 prose-strong:text-black prose-blockquote:border-l-black prose-blockquote:text-gray-700 prose-blockquote:font-normal">
           <MDXRemote {...essay.content} />
         </div>
       </article>

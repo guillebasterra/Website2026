@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function Contact() {
   return (
-    <div className="min-h-screen p-16 pt-16">
+    <div className="p-16 pt-16">
       <div className="max-w-2xl">
         <p className="text-base leading-relaxed text-gray-600">
           Shoot me an email:{' '}
