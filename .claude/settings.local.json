@@ -4,7 +4,10 @@
       "Bash(npm install)",
       "Bash(mv:*)",
       "Bash(npm run dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(for page in \"\" \"projects\" \"essays\" \"quotes\" \"contact\")",
+      "Bash(do echo:*)",
+      "Bash(done)"
     ]
   }
 }
