@@ -26,6 +26,25 @@
 }
 
 @layer utilities {
+  /* Animations */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   /* Prism theme for code blocks - GitHub Light (monochrome) */
   pre[class*="language-"] {
     @apply bg-gray-50 border border-gray-200 rounded-md p-4 overflow-x-auto;

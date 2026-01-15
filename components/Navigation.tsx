@@ -2,7 +2,7 @@
 
 import { Link } from 'next-view-transitions';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const menuItems = [
   { label: 'About', href: '/' },
@@ -25,7 +25,33 @@ const externalLinks = [
 export default function Navigation() {
   const pathname = usePathname();
   const [isLinksOpen, setIsLinksOpen] = useState(false);
+  const [isLinksClosing, setIsLinksClosing] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const linksDropdownRef = useRef<HTMLDivElement>(null);
+
+  const closeLinks = () => {
+    setIsLinksClosing(true);
+    setTimeout(() => {
+      setIsLinksOpen(false);
+      setIsLinksClosing(false);
+    }, 300 + externalLinks.length * 50); // Wait for animation to complete
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (linksDropdownRef.current && !linksDropdownRef.current.contains(event.target as Node)) {
+        closeLinks();
+      }
+    }
+
+    if (isLinksOpen && !isLinksClosing) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLinksOpen, isLinksClosing]);
 
   return (
     <>
@@ -84,25 +110,36 @@ export default function Navigation() {
           ))}
 
           {/* Links Dropdown */}
-          <div>
+          <div ref={linksDropdownRef}>
             <button
-              onClick={() => setIsLinksOpen(!isLinksOpen)}
+              onClick={() => {
+                if (isLinksOpen) {
+                  closeLinks();
+                } else {
+                  setIsLinksOpen(true);
+                }
+              }}
               className="text-base text-gray-500 transition-colors hover:text-black flex items-center gap-2"
             >
               Links
-              <span className={`text-xs transition-transform ${isLinksOpen ? 'rotate-90' : ''}`}>
+              <span className={`text-xs transition-transform ${isLinksOpen && !isLinksClosing ? 'rotate-90' : ''}`}>
                 ›
               </span>
             </button>
-            {isLinksOpen && (
-              <div className="mt-3 ml-4 flex flex-col gap-3">
-                {externalLinks.map((link) => (
+            {(isLinksOpen || isLinksClosing) && (
+              <div className="mt-3 ml-4 flex flex-col gap-3 overflow-hidden">
+                {externalLinks.map((link, index) => (
                   <a
                     key={link.href}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-gray-500 transition-colors hover:text-black"
+                    className="text-sm text-gray-500 transition-all hover:text-black opacity-0"
+                    style={{
+                      animation: isLinksClosing
+                        ? `slideOut 0.3s ease-out ${(externalLinks.length - 1 - index) * 0.05}s forwards`
+                        : `slideIn 0.3s ease-out ${index * 0.05}s forwards`,
+                    }}
                   >
                     {link.label}
                   </a>
