@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply bg-white text-black font-sans;
+    @apply bg-[#f0efea] text-black font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {

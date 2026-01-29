@@ -16,9 +16,9 @@ const externalLinks = [
   { label: 'X', href: 'https://twitter.com/willybasterra' },
   { label: 'YouTube', href: 'https://youtube.com/@willybasterra' },
   { label: 'GitHub', href: 'https://github.com/guillebasterra' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/guillebasterra' },
-  { label: 'Strava', href: 'https://strava.com' },
-  { label: 'Goodreads', href: 'https://goodreads.com' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/guillermo-basterra-diezhandino' },
+  { label: 'Strava', href: 'https://www.strava.com/athletes/62980423' },
+  { label: 'Goodreads', href: 'https://www.goodreads.com/user/show/109482797-guillermo-basterra' },
   { label: 'Resume', href: '/resume.pdf' },
 ];
 
@@ -77,7 +77,7 @@ export default function Navigation() {
       {/* Vertical Navigation Bar */}
       <nav
         className={`
-          fixed top-0 left-0 h-screen w-64 bg-white
+          fixed top-0 left-0 h-screen w-64 bg-[#f0efea]
           flex flex-col py-16 px-12 z-40
           transition-transform duration-300
           md:translate-x-0
